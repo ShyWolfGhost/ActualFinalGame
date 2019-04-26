@@ -251,7 +251,7 @@ Transform:
   m_LocalScale: {x: 1.685, y: 1.193, z: 1}
   m_Children: []
   m_Father: {fileID: 444364556}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &130903424
 SpriteRenderer:
@@ -712,9 +712,10 @@ Transform:
   m_Children:
   - {fileID: 610463500}
   - {fileID: 2112576183}
-  - {fileID: 846126606}
   - {fileID: 130903423}
+  - {fileID: 846126606}
   - {fileID: 1582835627}
+  - {fileID: 1130164313}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1172,7 +1173,7 @@ Transform:
   m_LocalScale: {x: 1.68, y: 1.193, z: 1}
   m_Children: []
   m_Father: {fileID: 444364556}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &846126607
 SpriteRenderer:
@@ -1335,8 +1336,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.853, y: -6.372}
-  m_SizeDelta: {x: 799.979, y: 143.109}
+  m_AnchoredPosition: {x: 0.853, y: -6.761996}
+  m_SizeDelta: {x: 799.979, y: 153.801}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1075904805
 MonoBehaviour:
@@ -1380,6 +1381,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075904803}
   m_CullTransparentMesh: 0
+--- !u!1 &1130164311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1130164313}
+  - component: {fileID: 1130164312}
+  m_Layer: 0
+  m_Name: WinBg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!212 &1130164312
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130164311}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: c7cbf5688e81042d2a24103e6581d5a0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 6, y: 6}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1130164313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130164311}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.01, y: -3.284, z: 115.9}
+  m_LocalScale: {x: 1.67756, y: 1.19431, z: 1}
+  m_Children: []
+  m_Father: {fileID: 444364556}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1178241870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,15 +2117,23 @@ MonoBehaviour:
   EndingText: {fileID: 1178241872}
   TitleText: {fileID: 1181293763}
   InstText: {fileID: 2142591698}
+  allButtons: {fileID: 521613202}
+  AwsRoute: {fileID: 315535034}
+  GeoffRoute: {fileID: 549224062}
+  OttRoute: {fileID: 1594936031}
   RouteNum: 0
   QuestNum: 0
   GoodAns: 0
   BadAns: 0
   ColorNum: 0
   AwsCheck: 0
-  GeoffCheck: 1
-  OttCheck: 1
+  GeoffCheck: 0
+  OttCheck: 0
   AllCheck: 0
+  menuBG: {fileID: 610463499}
+  PAWSBG: {fileID: 130903422}
+  GeoffBG: {fileID: 846126605}
+  OttBG: {fileID: 1582835626}
   can: {fileID: 702596501}
 --- !u!4 &1693843117
 Transform:
@@ -2128,7 +2216,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 248161a819142437582dd2f6e61dc9ee, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
