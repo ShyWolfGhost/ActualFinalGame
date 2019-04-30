@@ -382,6 +382,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                GameManager.Instance.mRestart.gameObject.SetActive(true);
                
                if (GameManager.Instance.GoodAns > GameManager.Instance.BadAns)
                 {
@@ -677,7 +678,7 @@ else if (GameManager.Instance.RouteNum == 2)
             }
             else
             {
-               
+                GameManager.Instance.mRestart.gameObject.SetActive(true);
                 if (GameManager.Instance.GoodAns > GameManager.Instance.BadAns)
                 {
                     Inviz();
@@ -986,7 +987,7 @@ else if (GameManager.Instance.RouteNum == 2)
             }
             else
             {
-                
+                GameManager.Instance.mRestart.gameObject.SetActive(true);
                 
                 if (GameManager.Instance.GoodAns > GameManager.Instance.BadAns)
                 {

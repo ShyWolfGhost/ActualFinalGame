@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,9 +36,15 @@ public class GameManager : MonoBehaviour
 
     //in ref to buttons
     public GameObject allButtons;
+    public GameObject RouteButtons;
+  
+
     public Button AwsRoute;
     public Button GeoffRoute;
     public Button OttRoute;
+    public Button LeftAnsB;
+    public Button RightAnsB;
+    public Button mRestart;
 
     public int RouteNum;
     public int QuestNum;
@@ -71,6 +79,16 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+    RouteButtons=GameObject.Find("PawstenButton"+"JeffieButton"+"OtterButton");
+        //LeftAnsB = GameObject.Find("LeftAns");
+        //RightAnsB = GameObject.Find("RightAns");
+        // LeftAnsB.enabled = false;
+        // RightAnsB.enabled = false;
+        
+        LeftAnsB.gameObject.SetActive(false);
+        RightAnsB.gameObject.SetActive(false);
+        TitleText.gameObject.SetActive(true);
+        InstText.gameObject.SetActive(false);
         //pRen = GetComponent<SpriteRenderer>();
         //jRen = GetComponent<SpriteRenderer>();
         //oRen = GetComponent<SpriteRenderer>();
@@ -91,6 +109,9 @@ public class GameManager : MonoBehaviour
         AwsRoute.onClick.AddListener(delegate { ChangeRoute(1); });
         GeoffRoute.onClick.AddListener(delegate { ChangeRoute(2); });
         OttRoute.onClick.AddListener(delegate { ChangeRoute(3); });
+        mRestart.onClick.AddListener(ReturntoMenu);
+        //LeftAnsB.onClick.AddListener();
+        //RightAnsB.onClick.AddListener();
 
 
         DontDestroyOnLoad(gameObject);
@@ -132,7 +153,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Restart();
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ReturntoMenu();
+        }
+        
+      
         //if (Input.GetKey(KeyCode.RightArrow));
         //{
         // RightText.color = Color.cyan;
@@ -157,14 +184,30 @@ public class GameManager : MonoBehaviour
 
     void ChangeRoute(int x)
     {
-        AwsRoute.enabled = false;
+        //Booleancheck();
+        InstText.gameObject.SetActive(false);
+        TitleText.gameObject.SetActive(false);
+        
+        AwsRoute.gameObject.SetActive(false);
+        GeoffRoute.gameObject.SetActive(false);
+        OttRoute.gameObject.SetActive(false);
+        
+        
         menuBG.SetActive(false);
-        allButtons.SetActive(false);
-        TitleText.color = Color.grey; //might work likely not
+        
+        //LeftAnsB.enabled = true;
+        //RightAnsB.enabled = true;
+        LeftAnsB.gameObject.SetActive(true);
+        RightAnsB.gameObject.SetActive(true);
+        
+        //TitleText.IsActive()=false; //might work likely not
         //Update I tested that and shocker it doesn;t work
         if (x == 1)
         {
+            
             Debug.Log("Paws");
+            InstText.gameObject.SetActive(false);
+            TitleText.gameObject.SetActive(false);
             RouteNum = 1;
             QuestNum = 0;
             PAWSBG.SetActive(true);
@@ -175,6 +218,8 @@ public class GameManager : MonoBehaviour
         else if  (x == 2)
         {
             Debug.Log("Jeffie");
+            InstText.gameObject.SetActive(false);
+            TitleText.gameObject.SetActive(false);
             RouteNum = 2;
             QuestNum = 7;
             PAWSBG.SetActive(false);
@@ -184,6 +229,8 @@ public class GameManager : MonoBehaviour
         else if (x == 3)
         {
             Debug.Log("Otter");
+            InstText.gameObject.SetActive(false);
+            TitleText.gameObject.SetActive(false);
             RouteNum = 3;
             QuestNum = 14;
             PAWSBG.SetActive(false);
@@ -196,4 +243,143 @@ public class GameManager : MonoBehaviour
             Debug.Log("404 ROUTE NOT FOUND");  
         }
     }
+    void ButtonClicked() {
+        RouteButtons.SetActive(false);   
+    }
+
+    void Restart()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            
+            RouteNum = 0;
+            QuestNum = 0;
+            GoodAns = 0;
+            BadAns = 0;
+            PAWSBG.SetActive(false);
+            GeoffBG.SetActive(false);
+            OttBG.SetActive(false);
+            LeftAnsB.gameObject.SetActive(false);
+            RightAnsB.gameObject.SetActive(false);
+            menuBG.SetActive(true);
+            SceneManager.LoadScene(0);
+        }
+    }
+
+    void ReturntoMenu()
+    {
+       
+        mRestart.gameObject.SetActive(false);
+        menuBG.SetActive(true);
+        InstText.gameObject.SetActive(false);
+        TitleText.gameObject.SetActive(true);
+        RouteNum = 0;
+        QuestNum = 0;
+        EndingText.gameObject.SetActive(false);
+        LeftAnsB.gameObject.SetActive(false);
+        RightAnsB.gameObject.SetActive(false);
+        Booleancheck();
+        
+    }
+
+    void Booleancheck()
+    {
+        
+        // awsCheck
+
+        if (AwsCheck)
+        {
+            AwsRoute.gameObject.SetActive(false);
+        }
+        else
+        {
+            AwsRoute.gameObject.SetActive(true);
+        }
+        
+        //geoffCheck
+
+        if (GeoffCheck)
+        {
+            GeoffRoute.gameObject.SetActive(false);
+        }
+        else
+        {
+            GeoffRoute.gameObject.SetActive(true);
+        }
+        
+        //ottCheck
+
+        if (OttCheck)
+        {
+            OttRoute.gameObject.SetActive(false);
+        }
+        else
+        {
+            OttRoute.gameObject.SetActive(true);
+        }
+        
+        /*
+        if (AwsCheck)
+        {
+            AwsRoute.gameObject.SetActive(false);
+            if (GeoffCheck == true)
+            {
+                GeoffRoute.gameObject.SetActive(false);
+                if (OttCheck == true)
+                {
+                    OttRoute.gameObject.SetActive(false);  
+                }
+                else if (OttCheck == false)
+                {
+                    OttRoute.gameObject.SetActive(true);
+                }
+            }
+            else if (GeoffCheck == false)
+            {
+                GeoffRoute.gameObject.SetActive(true);
+                if (OttCheck == true)
+                {
+                    OttRoute.gameObject.SetActive(false);  
+                }
+                else if (OttCheck == false)
+                {
+                    OttRoute.gameObject.SetActive(true);
+                }
+            }
+        }
+        else if (AwsCheck == false)
+        {
+            AwsRoute.gameObject.SetActive(true);
+            if (GeoffCheck == true)
+            {
+                GeoffRoute.gameObject.SetActive(false);
+                if (OttCheck == true)
+                {
+                    OttRoute.gameObject.SetActive(false);  
+                }
+                else if (OttCheck == false)
+                {
+                    OttRoute.gameObject.SetActive(true);
+                }
+            }
+            else if (GeoffCheck == false)
+            {
+                GeoffRoute.gameObject.SetActive(true);
+                if (OttCheck == true)
+                {
+                    OttRoute.gameObject.SetActive(false);  
+                }
+                else if (OttCheck == false)
+                {
+                    OttRoute.gameObject.SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("ERRRROR");
+        } */
+    } 
+    
 }
+//hide title
