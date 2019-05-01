@@ -63,8 +63,9 @@ public class GameManager : MonoBehaviour
     public GameObject PAWSBG;
     public GameObject GeoffBG;
     public GameObject OttBG;
+    public GameObject WinBG;
     //make moer backgrounds
-
+    public GameObject playerSprite;
 
     public Canvas can;
     //public SpriteRenderer pRen;
@@ -270,15 +271,42 @@ public class GameManager : MonoBehaviour
     {
        
         mRestart.gameObject.SetActive(false);
-        menuBG.SetActive(true);
-        InstText.gameObject.SetActive(false);
-        TitleText.gameObject.SetActive(true);
-        RouteNum = 0;
-        QuestNum = 0;
-        EndingText.gameObject.SetActive(false);
-        LeftAnsB.gameObject.SetActive(false);
-        RightAnsB.gameObject.SetActive(false);
-        Booleancheck();
+        if (AllCheck)
+        {
+            WinBG.SetActive(true);
+            //set EndSpritesTrue
+            //Set Win text True
+            AllCheck = false;
+            InstText.gameObject.SetActive(false);
+            TitleText.gameObject.SetActive(false);
+            RouteNum = 0;
+            QuestNum = 0;
+            EndingText.gameObject.SetActive(false);
+            LeftAnsB.gameObject.SetActive(false);
+            RightAnsB.gameObject.SetActive(false);
+            playerSprite.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                ReturntoMenu();
+            }
+        }
+        else
+        {
+            menuBG.SetActive(true);
+            InstText.gameObject.SetActive(false);
+            TitleText.gameObject.SetActive(true);
+            RouteNum = 0;
+            QuestNum = 0;
+            EndingText.gameObject.SetActive(false);
+            LeftAnsB.gameObject.SetActive(false);
+            RightAnsB.gameObject.SetActive(false);
+            AwsRoute.onClick.AddListener(delegate { ChangeRoute(1); });
+            GeoffRoute.onClick.AddListener(delegate { ChangeRoute(2); });
+            OttRoute.onClick.AddListener(delegate { ChangeRoute(3); });
+            Booleancheck(); 
+        }
+
+        
         
     }
 

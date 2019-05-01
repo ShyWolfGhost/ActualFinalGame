@@ -2655,6 +2655,8 @@ MonoBehaviour:
   PAWSBG: {fileID: 130903422}
   GeoffBG: {fileID: 846126605}
   OttBG: {fileID: 1582835626}
+  WinBG: {fileID: 1130164311}
+  playerSprite: {fileID: 121632990}
   can: {fileID: 702596501}
 --- !u!4 &1693843117
 Transform:
