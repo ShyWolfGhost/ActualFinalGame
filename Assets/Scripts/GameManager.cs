@@ -274,6 +274,9 @@ public class GameManager : MonoBehaviour
         if (AllCheck)
         {
             WinBG.SetActive(true);
+            PAWSBG.SetActive(false);
+            GeoffBG.SetActive(false);
+            OttBG.SetActive(false);
             //set EndSpritesTrue
             //Set Win text True
             AllCheck = false;
@@ -287,11 +290,15 @@ public class GameManager : MonoBehaviour
             playerSprite.SetActive(false);
             if (Input.GetKeyDown(KeyCode.R))
             {
-                ReturntoMenu();
+                SceneManager.LoadScene(0);
+                AwsRoute.onClick.AddListener(delegate { ChangeRoute(1); });
+                GeoffRoute.onClick.AddListener(delegate { ChangeRoute(2); });
+                OttRoute.onClick.AddListener(delegate { ChangeRoute(3); });
             }
         }
         else
         {
+            
             menuBG.SetActive(true);
             InstText.gameObject.SetActive(false);
             TitleText.gameObject.SetActive(true);
@@ -303,7 +310,9 @@ public class GameManager : MonoBehaviour
             AwsRoute.onClick.AddListener(delegate { ChangeRoute(1); });
             GeoffRoute.onClick.AddListener(delegate { ChangeRoute(2); });
             OttRoute.onClick.AddListener(delegate { ChangeRoute(3); });
-            Booleancheck(); 
+            Booleancheck();
+    
+            
         }
 
         
@@ -318,10 +327,14 @@ public class GameManager : MonoBehaviour
         if (AwsCheck)
         {
             AwsRoute.gameObject.SetActive(false);
+            AwsRoute.enabled = false;
+            AwsRoute.interactable = false;
         }
         else
         {
             AwsRoute.gameObject.SetActive(true);
+            AwsRoute.enabled = true;
+            AwsRoute.interactable = true;
         }
         
         //geoffCheck
@@ -329,10 +342,14 @@ public class GameManager : MonoBehaviour
         if (GeoffCheck)
         {
             GeoffRoute.gameObject.SetActive(false);
+            GeoffRoute.enabled = false;
+            GeoffRoute.interactable = false;
         }
         else
         {
             GeoffRoute.gameObject.SetActive(true);
+            GeoffRoute.enabled = true;
+            GeoffRoute.interactable = true;
         }
         
         //ottCheck
@@ -340,10 +357,14 @@ public class GameManager : MonoBehaviour
         if (OttCheck)
         {
             OttRoute.gameObject.SetActive(false);
+            OttRoute.enabled = false;
+            OttRoute.interactable = false;
         }
         else
         {
             OttRoute.gameObject.SetActive(true);
+            OttRoute.enabled = true;
+            OttRoute.interactable = true;
         }
         
         /*
