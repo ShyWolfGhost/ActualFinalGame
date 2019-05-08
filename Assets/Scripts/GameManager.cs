@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public Text EndingText;
     public Text TitleText;
     public Text InstText;
+    public Text mRestartText;
 
     //in ref to buttons
     public GameObject allButtons;
@@ -66,6 +67,9 @@ public class GameManager : MonoBehaviour
     public GameObject WinBG;
     //make moer backgrounds
     public GameObject playerSprite;
+    public GameObject PawWin;
+    public GameObject JeffWin;
+    public GameObject OttWin;
 
     public Canvas can;
     //public SpriteRenderer pRen;
@@ -82,6 +86,9 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        PawWin.SetActive(false);
+        JeffWin.SetActive(false);
+        OttWin.SetActive(false);
         AwsCheck = false;
         OttCheck = false;
         GeoffCheck = false;
@@ -185,6 +192,11 @@ public class GameManager : MonoBehaviour
             AllCheck = true;
         }
 
+        if (AllCheck)
+        {
+            mRestartText.text = "!!!Congratulations!!!";
+        }
+
 
 
     }
@@ -275,13 +287,18 @@ public class GameManager : MonoBehaviour
 
     void ReturntoMenu()
     {
-       
+
         mRestart.gameObject.SetActive(false);
         if (AllCheck)
         {
             WinSfx.Play();
             //Play FF Vic screen
+
+
             WinBG.SetActive(true);
+            PawWin.SetActive(true);
+            JeffWin.SetActive(true);
+            OttWin.SetActive(true);
             //add sprites
             PAWSBG.SetActive(false);
             GeoffBG.SetActive(false);
@@ -339,28 +356,53 @@ public class GameManager : MonoBehaviour
 
             }
         }
-        else
-        {
-            
-            menuBG.SetActive(true);
-            InstText.gameObject.SetActive(false);
-            TitleText.gameObject.SetActive(true);
-            RouteNum = 0;
-            QuestNum = 0;
-            EndingText.gameObject.SetActive(false);
-            LeftAnsB.gameObject.SetActive(false);
-            RightAnsB.gameObject.SetActive(false);
-            AwsRoute.onClick.AddListener(delegate { ChangeRoute(1); });
-            GeoffRoute.onClick.AddListener(delegate { ChangeRoute(2); });
-            OttRoute.onClick.AddListener(delegate { ChangeRoute(3); });
-            Booleancheck();
+    }
     
-            
-        }
+/*
+    else if (GoodAns>BadAns)
+    {
+        
+        menuBG.SetActive(true);
+        InstText.gameObject.SetActive(false);
+        TitleText.gameObject.SetActive(true);
+        RouteNum = 0;
+        QuestNum = 0;
+        EndingText.gameObject.SetActive(false);
+        LeftAnsB.gameObject.SetActive(false);
+        RightAnsB.gameObject.SetActive(false);
+        AwsRoute.onClick.AddListener(delegate { ChangeRoute(1); });
+        GeoffRoute.onClick.AddListener(delegate { ChangeRoute(2); });
+        OttRoute.onClick.AddListener(delegate { ChangeRoute(3); });
+        Booleancheck();
+        
+        
 
         
-        
     }
+    else if (BadAns >= GoodAns)
+    AwsCheck = false;
+    OttCheck = false;
+    GeoffCheck = false;
+    AllCheck = false;
+    menuBG.SetActive(true);
+    InstText.gameObject.SetActive(false);
+    TitleText.gameObject.SetActive(true);
+    RouteNum = 0;
+    QuestNum = 0;
+    GoodAns = 0;
+    BadAns = 0;
+    EndingText.gameObject.SetActive(false);
+    LeftAnsB.gameObject.SetActive(false);
+    RightAnsB.gameObject.SetActive(false);
+    AwsRoute.onClick.AddListener(delegate { ChangeRoute(1); });
+    GeoffRoute.onClick.AddListener(delegate { ChangeRoute(2); });
+    OttRoute.onClick.AddListener(delegate { ChangeRoute(3); });
+    Booleancheck();
+
+    
+    
+}
+*/
 
     void Booleancheck()
     {

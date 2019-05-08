@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
     
     public AudioSource LeftArrowSfx;
     public AudioSource RightArrowSfx;
+    public AudioSource WrongAnsBadEndSfx;
     
     
 
@@ -433,6 +434,7 @@ public class Player : MonoBehaviour
                 }
                 else if (GameManager.Instance.GoodAns <= GameManager.Instance.BadAns)
                 {
+                    WrongAnsBadEndSfx.Play();
                     Inviz();
                     GameManager.Instance.EndingText.text = GameManager.Instance.Endings[0];
                     Sren.sprite = BadPawsEnd;
@@ -728,6 +730,7 @@ else if (GameManager.Instance.RouteNum == 2)
                 }
                 else if (GameManager.Instance.GoodAns <= GameManager.Instance.BadAns)
                 {
+                    WrongAnsBadEndSfx.Play();
                     Sren.sprite = BadJEnd;
                     Inviz();
                     GameManager.Instance.EndingText.text = GameManager.Instance.Endings[2];
@@ -1038,6 +1041,7 @@ else if (GameManager.Instance.RouteNum == 2)
                 }
                 else if (GameManager.Instance.GoodAns <= GameManager.Instance.BadAns)
                 {
+                    WrongAnsBadEndSfx.Play();
                     Sren.sprite = BadOEnd;
                     Inviz();
                     GameManager.Instance.EndingText.text = GameManager.Instance.Endings[4];
@@ -1101,6 +1105,7 @@ else if (GameManager.Instance.RouteNum == 2)
 
     public void BadAnsFunc()
     {
+        WrongAnsBadEndSfx.Play();
         GameManager.Instance.BadAns = GameManager.Instance.BadAns + 1;
         GameManager.Instance.QuestNum++;
         GameManager.Instance.ColorNum = 0;
