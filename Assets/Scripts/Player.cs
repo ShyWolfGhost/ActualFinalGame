@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.WSA;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -55,6 +56,11 @@ public class Player : MonoBehaviour
     public Sprite BadO;
     public Sprite GoodOEnd;
     public Sprite BadOEnd;
+
+    
+    public AudioSource LeftArrowSfx;
+    public AudioSource RightArrowSfx;
+    
     
 
 
@@ -116,6 +122,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        // handle sound effects 
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            LeftArrowSfx.Play();
+        } else if (Input.GetKeyDown((KeyCode.RightArrow)))
+        {
+            RightArrowSfx.Play();
+        }
         //Change "GetKey" to "GetKeyDown" because GetKey happens constantly
         //Make an if statement that doesn't let the answer functions run if QuestNum is 7 or more
 //PAWSTEN
@@ -130,7 +145,6 @@ public class Player : MonoBehaviour
         
         if (GameManager.Instance.RouteNum == 1)
         {
-
             if (GameManager.Instance.QuestNum <= 6)
             {
                 Debug.Log(GameManager.Instance.QuestNum);
@@ -140,6 +154,19 @@ public class Player : MonoBehaviour
                 GameManager.Instance.QuestText.color = Color.magenta;
                 GameManager.Instance.EndingText.color = Color.magenta;
                 //GameManager.Instance.QuestText.font=Font.;
+                
+              //start of buttons
+                //if (GameManager.Instance.QuestNum == 0 && Input.GetButtonDown(GameManager.LeftAnsB))
+                
+                
+                
+                
+                
+                
+                
+                
+                // divide b/w arrow and button
+                
                 if (GameManager.Instance.QuestNum == 0)
                 {
                     Debug.Log("Color Num is:" + GameManager.Instance.ColorNum.ToString());
@@ -1128,6 +1155,12 @@ else if (GameManager.Instance.RouteNum == 2)
         GameManager.Instance.TitleText.text = "So You Want To Join MeowderSlides?";
         GameManager.Instance.InstText.text = "Press 1 for Pawsten\nPress 2 for Jeffie\nPress 3 for Otter";
 
+        
+    }
+
+    public void RightButtonPressed()
+    {
+        GameManager.Instance.ColorNum = 2;
         
     }
 }

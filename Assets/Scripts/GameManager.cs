@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
     //public SpriteRenderer pRen;
     //public SpriteRenderer jRen;
     //public SpriteRenderer oRen;
+    
+    public AudioSource WinSfx;
 
 
 
@@ -80,6 +82,10 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        AwsCheck = false;
+        OttCheck = false;
+        GeoffCheck = false;
+        AllCheck = false;
     RouteButtons=GameObject.Find("PawstenButton"+"JeffieButton"+"OtterButton");
         //LeftAnsB = GameObject.Find("LeftAns");
         //RightAnsB = GameObject.Find("RightAns");
@@ -263,7 +269,7 @@ public class GameManager : MonoBehaviour
             LeftAnsB.gameObject.SetActive(false);
             RightAnsB.gameObject.SetActive(false);
             menuBG.SetActive(true);
-            SceneManager.LoadScene(0);
+            //SceneManager.LoadScene(0);
         }
     }
 
@@ -273,7 +279,10 @@ public class GameManager : MonoBehaviour
         mRestart.gameObject.SetActive(false);
         if (AllCheck)
         {
+            WinSfx.Play();
+            //Play FF Vic screen
             WinBG.SetActive(true);
+            //add sprites
             PAWSBG.SetActive(false);
             GeoffBG.SetActive(false);
             OttBG.SetActive(false);
@@ -284,16 +293,50 @@ public class GameManager : MonoBehaviour
             TitleText.gameObject.SetActive(false);
             RouteNum = 0;
             QuestNum = 0;
-            EndingText.gameObject.SetActive(false);
+            EndingText.text = Endings[6];
+            EndingText.color = Color.green;
+            EndingText.gameObject.SetActive(true);
             LeftAnsB.gameObject.SetActive(false);
             RightAnsB.gameObject.SetActive(false);
             playerSprite.SetActive(false);
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SceneManager.LoadScene(0);
+                //SceneManager.LoadScene(0);
+                AllCheck = false;
                 AwsRoute.onClick.AddListener(delegate { ChangeRoute(1); });
                 GeoffRoute.onClick.AddListener(delegate { ChangeRoute(2); });
                 OttRoute.onClick.AddListener(delegate { ChangeRoute(3); });
+                RouteNum = 0;
+                QuestNum = 0;
+                AwsCheck = false;
+                OttCheck = false;
+                GeoffCheck = false;
+                AllCheck = false;
+                AwsRoute.gameObject.SetActive(true);
+                AwsRoute.enabled = true;
+                AwsRoute.interactable = true;
+                GeoffRoute.gameObject.SetActive(true);
+                GeoffRoute.enabled = true;
+                GeoffRoute.interactable = true;
+                OttRoute.gameObject.SetActive(true);
+                OttRoute.enabled = true;
+                OttRoute.interactable = true;
+                menuBG.SetActive(true);
+                InstText.gameObject.SetActive(false);
+                TitleText.gameObject.SetActive(true);
+                RouteNum = 0;
+                QuestNum = 0;
+                EndingText.gameObject.SetActive(false);
+                LeftAnsB.gameObject.SetActive(false);
+                RightAnsB.gameObject.SetActive(false);
+                AwsRoute.onClick.AddListener(delegate { ChangeRoute(1); });
+                GeoffRoute.onClick.AddListener(delegate { ChangeRoute(2); });
+                OttRoute.onClick.AddListener(delegate { ChangeRoute(3); });
+                Booleancheck();
+
+                Awake();
+                Start();
+
             }
         }
         else
