@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     public GameObject PAWSBG;
     public GameObject GeoffBG;
     public GameObject OttBG;
+    public GameObject ParkBG;
 
     public GameObject WinBG;
 
@@ -82,6 +83,10 @@ public class GameManager : MonoBehaviour
     //public SpriteRenderer oRen;
 
     public AudioSource WinSfx;
+    public AudioSource MenuMusic;
+    public AudioSource JeffieMusic;
+    public AudioSource PawsMusic;
+    public AudioSource OttMusic;
 
 
 
@@ -91,6 +96,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        RouteNum = 0;
+        
         PawWin.SetActive(false);
         JeffWin.SetActive(false);
         OttWin.SetActive(false);
@@ -111,7 +118,7 @@ public class GameManager : MonoBehaviour
         //pRen = GetComponent<SpriteRenderer>();
         //jRen = GetComponent<SpriteRenderer>();
         //oRen = GetComponent<SpriteRenderer>();
-        RouteNum = 0;
+        
         QuestNum = 21;
         if (Instance == null)
             Instance = this;
@@ -149,6 +156,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //MenuMusic.Play();
+        //PawsMusic.Pause();
+        //JeffieMusic.Pause();
+        //OttMusic.Pause();
 
         if (RightText != null)
         {
@@ -161,6 +172,8 @@ public class GameManager : MonoBehaviour
             LeftText.color = Color.black;
 
         }
+        
+      
 
         AwsCheck = false;
         GeoffCheck = false;
@@ -174,6 +187,25 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
+        if (RouteNum == 0)
+        {
+            MenuMusic.Play();
+            PawsMusic.Pause();
+            JeffieMusic.Pause();
+            OttMusic.Pause();
+        }
+        */
+        if (BadAns > GoodAns)
+        {
+            ParkBG.SetActive(false);
+        }
+        else if (BadAns <= GoodAns)
+        {
+            ParkBG.SetActive(true);
+        }
+       
+        
         Restart();
         if (Input.GetKeyDown(KeyCode.M))
         {
@@ -215,6 +247,7 @@ public class GameManager : MonoBehaviour
 
     void ChangeRoute(int x)
     {
+        MenuMusic.Pause();
         //Booleancheck();
         InstText.gameObject.SetActive(false);
         TitleText.gameObject.SetActive(false);
@@ -237,6 +270,9 @@ public class GameManager : MonoBehaviour
         {
 
             Debug.Log("Paws");
+            PawsMusic.UnPause();
+            JeffieMusic.Pause();
+            OttMusic.Pause();
             InstText.gameObject.SetActive(false);
             TitleText.gameObject.SetActive(false);
             RouteNum = 1;
@@ -249,6 +285,9 @@ public class GameManager : MonoBehaviour
         else if (x == 2)
         {
             Debug.Log("Jeffie");
+            PawsMusic.Pause();
+            JeffieMusic.UnPause();
+            OttMusic.Pause();
             InstText.gameObject.SetActive(false);
             TitleText.gameObject.SetActive(false);
             RouteNum = 2;
@@ -260,6 +299,9 @@ public class GameManager : MonoBehaviour
         else if (x == 3)
         {
             Debug.Log("Otter");
+            PawsMusic.Pause();
+            JeffieMusic.Pause();
+            OttMusic.UnPause();
             InstText.gameObject.SetActive(false);
             TitleText.gameObject.SetActive(false);
             RouteNum = 3;

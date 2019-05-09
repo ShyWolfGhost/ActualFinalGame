@@ -1132,6 +1132,7 @@ else if (GameManager.Instance.RouteNum == 2)
 
     public void ResetGOOD()
     {
+        //Sren.sprite = starter;
         //QuestNum = 0;
         //GoodAns = 0;
         //BadAns = 0;
@@ -1139,6 +1140,11 @@ else if (GameManager.Instance.RouteNum == 2)
         //Sren.sprite = starter;
         //GameManager.Instance.EndingText.text=" ";
         GoodAnsGoodEndSfx.Play();
+        GameManager.Instance.ParkBG.SetActive(true);
+        GameManager.Instance.PawsMusic.Pause();
+        GameManager.Instance.JeffieMusic.Pause();
+        GameManager.Instance.OttMusic.Pause();
+        GameManager.Instance.MenuMusic.UnPause();
         GameManager.Instance.RouteNum = 0;
         GameManager.Instance.QuestText.text = " ";
         GameManager.Instance.EndingText.text = " ";
@@ -1153,6 +1159,12 @@ else if (GameManager.Instance.RouteNum == 2)
 
     public void ResetBAD()
     {
+        //Sren.sprite = starter;
+        GameManager.Instance.ParkBG.SetActive(true);
+        GameManager.Instance.MenuMusic.UnPause();
+        GameManager.Instance.PawsMusic.Pause();
+        GameManager.Instance.JeffieMusic.Pause();
+        GameManager.Instance.OttMusic.Pause();
         GameManager.Instance.QuestNum = 0;
         GameManager.Instance.GoodAns = 0;
         GameManager.Instance.BadAns = 0;
@@ -1171,6 +1183,7 @@ else if (GameManager.Instance.RouteNum == 2)
         GameManager.Instance.TitleText.text = "So You Want To Join MeowderSlides?";
         GameManager.Instance.InstText.text = "Press 1 for Pawsten\nPress 2 for Jeffie\nPress 3 for Otter";
         GameManager.Instance.EndingText.gameObject.SetActive(false);
+        
 
         
     }
