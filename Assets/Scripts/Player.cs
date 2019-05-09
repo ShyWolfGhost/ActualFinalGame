@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
     public AudioSource LeftArrowSfx;
     public AudioSource RightArrowSfx;
     public AudioSource WrongAnsBadEndSfx;
+    public AudioSource GoodAnsGoodEndSfx;
     
     
 
@@ -411,9 +412,12 @@ public class Player : MonoBehaviour
             else
             {
                 GameManager.Instance.mRestart.gameObject.SetActive(true);
+                GameManager.Instance.EndingText.gameObject.SetActive(true);
                
                if (GameManager.Instance.GoodAns > GameManager.Instance.BadAns)
-                {
+                   
+               {
+                   //GoodAnsGoodEndSfx.Play();
                     Inviz();
                     GameManager.Instance.EndingText.text = GameManager.Instance.Endings[1];
                     Sren.sprite = GoodPawsEnd;
@@ -434,7 +438,7 @@ public class Player : MonoBehaviour
                 }
                 else if (GameManager.Instance.GoodAns <= GameManager.Instance.BadAns)
                 {
-                    WrongAnsBadEndSfx.Play();
+                    //WrongAnsBadEndSfx.Play();
                     Inviz();
                     GameManager.Instance.EndingText.text = GameManager.Instance.Endings[0];
                     Sren.sprite = BadPawsEnd;
@@ -708,8 +712,10 @@ else if (GameManager.Instance.RouteNum == 2)
             else
             {
                 GameManager.Instance.mRestart.gameObject.SetActive(true);
+                GameManager.Instance.EndingText.gameObject.SetActive(true);
                 if (GameManager.Instance.GoodAns > GameManager.Instance.BadAns)
                 {
+                    //GoodAnsGoodEndSfx.Play();
                     Inviz();
                     GameManager.Instance.EndingText.text = GameManager.Instance.Endings[3];
                     Sren.sprite = GoodJEnd;               
@@ -730,7 +736,7 @@ else if (GameManager.Instance.RouteNum == 2)
                 }
                 else if (GameManager.Instance.GoodAns <= GameManager.Instance.BadAns)
                 {
-                    WrongAnsBadEndSfx.Play();
+                   // WrongAnsBadEndSfx.Play();
                     Sren.sprite = BadJEnd;
                     Inviz();
                     GameManager.Instance.EndingText.text = GameManager.Instance.Endings[2];
@@ -962,7 +968,7 @@ else if (GameManager.Instance.RouteNum == 2)
                         Debug.Log("Bad");
                         BadAnsFunc();
                     }
-                    }
+                    
 
                     else if (Input.GetKeyDown(Right))
                     {
@@ -977,8 +983,8 @@ else if (GameManager.Instance.RouteNum == 2)
                         Sren.sprite = GoodO;
                         Debug.Log("Good");
                         GoodAnsFunc();
+                    }
 
-                       
                 }
                 else if (GameManager.Instance.QuestNum == 20)
                 {
@@ -1018,9 +1024,11 @@ else if (GameManager.Instance.RouteNum == 2)
             else
             {
                 GameManager.Instance.mRestart.gameObject.SetActive(true);
+                GameManager.Instance.EndingText.gameObject.SetActive(true);
                 
                 if (GameManager.Instance.GoodAns > GameManager.Instance.BadAns)
                 {
+                    //GoodAnsGoodEndSfx.Play();
                     Inviz();
                     GameManager.Instance.EndingText.text = GameManager.Instance.Endings[5];
                     Sren.sprite = GoodOEnd;
@@ -1041,7 +1049,7 @@ else if (GameManager.Instance.RouteNum == 2)
                 }
                 else if (GameManager.Instance.GoodAns <= GameManager.Instance.BadAns)
                 {
-                    WrongAnsBadEndSfx.Play();
+                    //WrongAnsBadEndSfx.Play();
                     Sren.sprite = BadOEnd;
                     Inviz();
                     GameManager.Instance.EndingText.text = GameManager.Instance.Endings[4];
@@ -1095,6 +1103,7 @@ else if (GameManager.Instance.RouteNum == 2)
     
     public void GoodAnsFunc()
     {
+        GoodAnsGoodEndSfx.Play();
         GameManager.Instance.GoodAns = GameManager.Instance.GoodAns + 1;
         GameManager.Instance.QuestNum++;
         GameManager.Instance.ColorNum = 0;
@@ -1129,11 +1138,13 @@ else if (GameManager.Instance.RouteNum == 2)
         //ColorNum = 0;
         //Sren.sprite = starter;
         //GameManager.Instance.EndingText.text=" ";
+        GoodAnsGoodEndSfx.Play();
         GameManager.Instance.RouteNum = 0;
         GameManager.Instance.QuestText.text = " ";
         GameManager.Instance.EndingText.text = " ";
         GameManager.Instance.TitleText.text = "So You Want To Join MeowderSlides?";
         GameManager.Instance.InstText.text = "Press 1 for Pawsten\nPress 2 for Jeffie\nPress 3 for Otter";
+        GameManager.Instance.EndingText.gameObject.SetActive(false);
 
         //GameManager.Instance.pRen.enabled = true;
         //GameManager.Instance.jRen.enabled = true;
@@ -1159,13 +1170,17 @@ else if (GameManager.Instance.RouteNum == 2)
         GameManager.Instance.EndingText.text = " ";
         GameManager.Instance.TitleText.text = "So You Want To Join MeowderSlides?";
         GameManager.Instance.InstText.text = "Press 1 for Pawsten\nPress 2 for Jeffie\nPress 3 for Otter";
+        GameManager.Instance.EndingText.gameObject.SetActive(false);
 
         
     }
 
-    public void RightButtonPressed()
-    {
-        GameManager.Instance.ColorNum = 2;
+  
+     // public void RightButtonPressed()
+     
+    //{
+        //GameManager.Instance.ColorNum = 2;
         
-    }
+   // }
+    
 }
