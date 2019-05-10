@@ -270,6 +270,7 @@ public class GameManager : MonoBehaviour
         {
 
             Debug.Log("Paws");
+            PawsMusic.Play();
             PawsMusic.UnPause();
             JeffieMusic.Pause();
             OttMusic.Pause();
@@ -286,6 +287,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Jeffie");
             PawsMusic.Pause();
+            JeffieMusic.Play();
             JeffieMusic.UnPause();
             OttMusic.Pause();
             InstText.gameObject.SetActive(false);
@@ -301,6 +303,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Otter");
             PawsMusic.Pause();
             JeffieMusic.Pause();
+            OttMusic.Play();
             OttMusic.UnPause();
             InstText.gameObject.SetActive(false);
             TitleText.gameObject.SetActive(false);
@@ -348,6 +351,10 @@ public class GameManager : MonoBehaviour
         playerSprite.SetActive(false);
         if (AllCheck)
         {
+            
+            PawsMusic.UnPause();
+            JeffieMusic.Pause();
+            OttMusic.Pause();
             WinSfx.Play();
             //Play FF Vic screen
             Ptar.gameObject.SetActive(false);
